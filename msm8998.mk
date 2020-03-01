@@ -305,9 +305,7 @@ PRODUCT_PACKAGES += \
 
 # Net
 PRODUCT_PACKAGES += \
-    android.system.net.netd@1.0 \
-    android.system.net.netd@1.1.vendor \
-    libandroid_net
+    android.system.net.netd@1.1.vendor
 
 # NFC
 PRODUCT_PACKAGES += \
