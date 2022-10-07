@@ -204,12 +204,6 @@ service vendor.tftp_server /vendor/bin/tftp_server
     class core
     user root
 
-service vendor.atfwd /vendor/bin/ATFWD-daemon
-    class late_start
-    user system
-    group system radio
-    task_profiles ServiceCapacityLow
-
 service vendor.sensors /vendor/bin/sensors.qti
     class main
     user system
