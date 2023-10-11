@@ -445,7 +445,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant.conf
 
 PRODUCT_PACKAGES += \
-    android.hardware.wifi-service \
+    android.hardware.wifi@1.0-service.xiaomi_msm8998 \
     android.hardware.wifi.hostapd@1.0.vendor
 
 PRODUCT_PACKAGES += \
