@@ -261,13 +261,6 @@ on property:vold.decrypt=trigger_restart_framework
 on property:init.svc.vendor.qcrild=running
     restart vendor.radio-config-hal-1-1.wrapper
 
-service charger /system/bin/charger
-    class charger
-    user system
-    group system graphics input
-    capabilities SYS_BOOT
-    seclabel u:r:charger:s0
-
 service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
     class core
     user root
