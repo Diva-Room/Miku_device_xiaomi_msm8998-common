@@ -155,6 +155,7 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.5:64 \
     libcamera_shim \
     libpiex_shim \
+    libpng.vendor:32 \
     vendor.qti.hardware.camera.device@1.0:64
 
 # Configstore
@@ -253,6 +254,7 @@ PRODUCT_PACKAGES += \
 # HIDL
 PRODUCT_PACKAGES += \
     android.hidl.memory@1.0.vendor \
+    libhidlmemory.vendor:64 \
     libhidltransport \
     libhidltransport.vendor \
     libhwbinder \
@@ -261,7 +263,8 @@ PRODUCT_PACKAGES += \
 # IMS
 PRODUCT_PACKAGES += \
     ims-ext-common \
-    ims_ext_common.xml
+    ims_ext_common.xml \
+    libion.vendor
 
 ifeq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_SYSTEM_PROPERTIES += \
@@ -387,7 +390,9 @@ PRODUCT_PACKAGES += \
     android.hardware.radio.deprecated@1.0.vendor \
     android.hardware.secure_element@1.2.vendor \
     CarrierConfigOverlay \
-    librmnetctl
+    libnetutils.vendor \
+    librmnetctl \
+    libsqlite.vendor:64
 
 PRODUCT_PACKAGES += \
     android.hardware.radio.config@1.1-service.wrapper.xiaomi_msm8998 \
@@ -402,7 +407,8 @@ PRODUCT_COPY_FILES += \
 # Sensors
 PRODUCT_PACKAGES += \
     android.hardware.sensors@1.0-impl:64 \
-    android.hardware.sensors@1.0-service
+    android.hardware.sensors@1.0-service \
+    libpower.vendor
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
