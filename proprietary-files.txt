@@ -635,7 +635,7 @@ system_ext/app/uceShimService/uceShimService.apk|76eee011c6cf2d61c9bf5a334dc89c3
 -system_ext/lib64/lib-imscamera.so;DISABLE_DEPS|49ead972646b09d700556d63676673b3e8af2036
 -system_ext/lib64/lib-imsvt.so;DISABLE_DEPS|4f96cc5f27551d0b6cb11ad6447d9ce8829dde47
 -system_ext/lib64/lib-imsvtextutils.so;DISABLE_DEPS|336c0ffed49a0a4605f41b488771ee0217fa80f0
--system_ext/lib64/libimsmedia_jni.so;DISABLE_DEPS|f8be2575f8eaef8bb89a4bc049381ebffe857831
+-system_ext/lib64/libimsmedia_jni.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimsmedia_jni.so|f8be2575f8eaef8bb89a4bc049381ebffe857831
 -system_ext/lib64/vendor.qti.imsrtpservice@3.0.so;DISABLE_DEPS;DISABLE_DEPS|460e589128fce0b0e83bb3c75aa32f7e1a9494fd
 system_ext/priv-app/ims/ims.apk|c166b3ae80438f2098a0aa7b1acdae915fec0382
 -vendor/bin/ims_rtp_daemon;DISABLE_DEPS|ed5c13c758080d79a9371061d53127d406475614
@@ -692,7 +692,7 @@ vendor/etc/seccomp_policy/imsrtp.policy|7ea8b4012da7bde98fc91bd882185b32784793cc
 # Radio - IMS - from missi_phonenonab_eea-user TKQ1.221013.002 V14.0.2.0.TKFEUXM
 -system_ext/lib64/lib-imsvideocodec.so;DISABLE_DEPS|3fa5444a061dd5af35f924744dc6a73d535cedf6
 -system_ext/lib64/lib-imsvtutils.so;DISABLE_DEPS|6df6279955493da11860bb048db38f01ec05c2aa
--system_ext/lib64/libimscamera_jni.so;DISABLE_DEPS|f6b7647cfe080baeed006c932b495ff94b5685a7
+-system_ext/lib64/libimscamera_jni.so;DISABLE_DEPS;SYMLINK=system_ext/priv-app/ims/lib/arm64/libimscamera_jni.so|f6b7647cfe080baeed006c932b495ff94b5685a7
 
 # Sensors
 -vendor/bin/sensors.qti;DISABLE_DEPS
