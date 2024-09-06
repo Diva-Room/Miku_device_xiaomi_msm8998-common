@@ -430,6 +430,7 @@ PRODUCT_PACKAGES += \
 # VNDK
 PRODUCT_PACKAGES += \
     libdng_sdk.vendor_32 \
+    libhidlbase_shim \
     libstdc++_vendor
 
 # Wifi
