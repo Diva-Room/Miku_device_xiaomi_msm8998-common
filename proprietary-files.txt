@@ -472,7 +472,7 @@ vendor/etc/init/vendor.xiaomi.hardware.mlipay@1.1-service.rc
 -vendor/lib64/libmlipay@1.1.so;DISABLE_DEPS
 
 # NFC firmware
--vendor/lib/libpn553_fw.so;DISABLE_DEPS
+-vendor/lib/libpn553_fw.so:vendor/lib64/libpn557_fw.so;DISABLE_DEPS
 
 # Perf
 -vendor/bin/hw/vendor.qti.hardware.perf@1.0-service;DISABLE_DEPS
