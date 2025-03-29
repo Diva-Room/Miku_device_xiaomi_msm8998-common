@@ -8,7 +8,7 @@
 
 # ADSP modules
 -vendor/lib/rfsa/adsp/dirac_resource.dar;DISABLE_DEPS
--vendor/lib/rfsa/adsp/dirac_resource.so;DISABLE_DEPS
+-vendor/lib/rfsa/adsp/dirac_resource.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor
 -vendor/lib/rfsa/adsp/libadsp_fd_skel.so;DISABLE_DEPS
 -vendor/lib/rfsa/adsp/libadsp_hvx_add_constant.so;DISABLE_DEPS
 -vendor/lib/rfsa/adsp/libadsp_hvx_skel.so;DISABLE_DEPS
@@ -29,7 +29,7 @@ system_ext/framework/vendor.qti.hardware.alarm-V1.0-java.jar|53c8e43e6ab1db1c382
 -vendor/bin/power_off_alarm;DISABLE_DEPS|911a408ebcfe448f697225e4c39573704c41544f
 vendor/etc/init/vendor.qti.hardware.alarm@1.0-service.rc|a03a9a1c818595b19272ea6ffb466e23a7fc3b05
 -vendor/lib64/hw/vendor.qti.hardware.alarm@1.0-impl.so;DISABLE_DEPS|7de458829e1d4f5157b291dab5fdb25546df08fc
--vendor/lib64/vendor.qti.hardware.alarm@1.0.so;DISABLE_DEPS|6918a6a6d66509568ced685917c891038cec3d13
+-vendor/lib64/vendor.qti.hardware.alarm@1.0.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|6918a6a6d66509568ced685917c891038cec3d13
 
 # ANT+ - from sld_sprout RKQ1.210607.001-00WW_3_490
 -vendor/lib64/hw/com.dsi.ant@1.0-impl.so;DISABLE_DEPS|87dc1a131534659173e71e108e7a3ffe6325845f
@@ -278,7 +278,7 @@ system_ext/framework/dpmapi.jar|2e2fbe2257a697b96a644c774136da0554430d3f
 system_ext/priv-app/dpmserviceapp/dpmserviceapp.apk|b404ff23a51f505ecf2a61a1b0f4e569eedcd3c9
 -vendor/bin/dpmQmiMgr|3c553042d4257161adb75c0979c829b0cb050639
 vendor/etc/init/dpmQmiMgr.rc|1538743661a5c48c15cd105beaad20f72953885a
--vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so;DISABLE_DEPS|d9f1aa7f93b928f42499d613d20ccbc60f279097
+-vendor/lib64/com.qualcomm.qti.dpm.api@1.0.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|d9f1aa7f93b928f42499d613d20ccbc60f279097
 -vendor/lib64/libdpmqmihal.so;DISABLE_DEPS|41eb89e66ba065c43a5eb79cd3c72cef0ee167aa
 
 # DRM and SEE - from LA.UM.9.6.2.r1-04200-89xx.0
@@ -308,8 +308,8 @@ vendor/etc/init/dpmQmiMgr.rc|1538743661a5c48c15cd105beaad20f72953885a
 -system_ext/lib64/vendor.qti.hardware.tui_comm@1.0.so;DISABLE_DEPS|b42fa9db67cf5050c3ae4e93ea3954ea2bff4bdb
 -vendor/bin/hw/vendor.qti.hardware.tui_comm@1.0-service-qti|cf3d3d18a169c2fdb601aece7d8ec09df0d88bf7
 vendor/etc/init/vendor.qti.hardware.tui_comm@1.0-service-qti.rc|a6bd2ff94dd9a50ddb3fa5e24aa5df0d90b072ed
--vendor/lib/vendor.qti.hardware.tui_comm@1.0.so;DISABLE_DEPS|88a8ac5aa140029762836bd2bba0984ead548756
--vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so;DISABLE_DEPS|19599f6a2afd8a218a2a1d3bb214575db98e3c53
+-vendor/lib/vendor.qti.hardware.tui_comm@1.0.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|88a8ac5aa140029762836bd2bba0984ead548756
+-vendor/lib64/vendor.qti.hardware.tui_comm@1.0.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|19599f6a2afd8a218a2a1d3bb214575db98e3c53
 
 # DRM (Widevine) - from Coral - Tiramisu/TPP1.220114.016/8158200
 -vendor/bin/hw/android.hardware.drm@1.4-service.widevine;DISABLE_DEPS|40007c2086cb435d36b38de089cdfa4f38941b4e
@@ -649,14 +649,14 @@ vendor/etc/init/imsdatadaemon.rc|29face37c174aebcd1358f7d7ad0bd4baf83063b
 vendor/etc/init/imsqmidaemon.rc|dda16d842b7c65296e97bc9921b723a43b152ba3
 vendor/etc/init/imsrcsd.rc|2dc42ff6e4b6dd389bd3bc9a7af30dec2f1a45df
 vendor/etc/seccomp_policy/imsrtp.policy|7ea8b4012da7bde98fc91bd882185b32784793cc
--vendor/lib64/com.qualcomm.qti.imscmservice@1.0.so;DISABLE_DEPS|a761618b9364baa8f502acebb704829134e41afe
--vendor/lib64/com.qualcomm.qti.imscmservice@2.0.so;DISABLE_DEPS|4762336f206fd903503c8d6efd3ee7140286dfca
--vendor/lib64/com.qualcomm.qti.imscmservice@2.1.so;DISABLE_DEPS|e96b00cf21b879b8944a3425c0689d88103046dc
--vendor/lib64/com.qualcomm.qti.imscmservice@2.2.so;DISABLE_DEPS|eda70b402593516893a31490a22a9a985cf6241c
--vendor/lib64/com.qualcomm.qti.uceservice@2.0.so;DISABLE_DEPS|45c69806bb6041451a50b38d63231a7fa5c98780
--vendor/lib64/com.qualcomm.qti.uceservice@2.1.so;DISABLE_DEPS|271bc984ab857afafaa00cfb37530d51fef51df0
--vendor/lib64/com.qualcomm.qti.uceservice@2.2.so;DISABLE_DEPS|a550be95337ed6e56f6ed7374f9f97b1ae5f4085
--vendor/lib64/com.qualcomm.qti.uceservice@2.3.so;DISABLE_DEPS|e3fd16a1a26a94a25a4ecf604557c7626a3d02f3
+-vendor/lib64/com.qualcomm.qti.imscmservice@1.0.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|a761618b9364baa8f502acebb704829134e41afe
+-vendor/lib64/com.qualcomm.qti.imscmservice@2.0.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|4762336f206fd903503c8d6efd3ee7140286dfca
+-vendor/lib64/com.qualcomm.qti.imscmservice@2.1.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|e96b00cf21b879b8944a3425c0689d88103046dc
+-vendor/lib64/com.qualcomm.qti.imscmservice@2.2.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|eda70b402593516893a31490a22a9a985cf6241c
+-vendor/lib64/com.qualcomm.qti.uceservice@2.0.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|45c69806bb6041451a50b38d63231a7fa5c98780
+-vendor/lib64/com.qualcomm.qti.uceservice@2.1.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|271bc984ab857afafaa00cfb37530d51fef51df0
+-vendor/lib64/com.qualcomm.qti.uceservice@2.2.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|a550be95337ed6e56f6ed7374f9f97b1ae5f4085
+-vendor/lib64/com.qualcomm.qti.uceservice@2.3.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|e3fd16a1a26a94a25a4ecf604557c7626a3d02f3
 -vendor/lib64/lib-imscmservice.so;DISABLE_DEPS|e3559e804359dd90cda664e2fc415a1d2f42d29b
 -vendor/lib64/lib-imsdpl.so;DISABLE_DEPS|f2ccd2ad9d7551f0b18d327adb5832a8b3a5a22b
 -vendor/lib64/lib-imsqimf.so;DISABLE_DEPS|64b96dfd380190aada352c31f45d7a2db63d81f6
@@ -687,7 +687,7 @@ vendor/etc/seccomp_policy/imsrtp.policy|7ea8b4012da7bde98fc91bd882185b32784793cc
 -vendor/lib64/vendor.qti.ims.rcsconfig@2.0.so;DISABLE_DEPS|bd0db76d555c51971dcfcce62d981f987af32811
 -vendor/lib64/vendor.qti.ims.rcsconfig@2.1.so;DISABLE_DEPS|f52f0cd5e19455eba97dea61542217d4aa5c1841
 -vendor/lib64/vendor.qti.imsrtpservice@3.0-service-Impl.so;DISABLE_DEPS|0613dc47603180efd13a0dea6bdb22a5068aee8d
--vendor/lib64/vendor.qti.imsrtpservice@3.0.so;DISABLE_DEPS|460e589128fce0b0e83bb3c75aa32f7e1a9494fd
+-vendor/lib64/vendor.qti.imsrtpservice@3.0.so;DISABLE_DEPS;MODULE_SUFFIX=-vendor|460e589128fce0b0e83bb3c75aa32f7e1a9494fd
 
 # Radio - IMS - from missi_phonenonab_eea-user TKQ1.221013.002 V14.0.2.0.TKFEUXM
 -system_ext/lib64/lib-imsvideocodec.so;DISABLE_DEPS|3fa5444a061dd5af35f924744dc6a73d535cedf6
