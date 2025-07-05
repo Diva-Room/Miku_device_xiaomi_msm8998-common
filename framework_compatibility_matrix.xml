@@ -1,13 +1,5 @@
 <compatibility-matrix version="2.0" type="framework">
     <hal format="hidl" optional="true">
-        <name>_mi8998.hardware.radio.oldcfg</name>
-        <version>1.0</version>
-        <interface>
-            <name>IRadioOldcfg</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl" optional="true">
         <name>android.hardware.gnss</name>
         <version>1.0</version>
         <interface>
@@ -85,6 +77,14 @@
         <interface>
             <name>IUceService</name>
             <instance>com.qualcomm.qti.uceservice</instance>
+        </interface>
+    </hal>
+    <hal format="hidl" optional="true">
+        <name>lineage.hardware.radio.config</name>
+        <version>1.0-1</version>
+        <interface>
+            <name>IRadioConfig</name>
+            <instance>default</instance>
         </interface>
     </hal>
     <hal format="hidl" optional="true">
