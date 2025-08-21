@@ -1,3 +1,6 @@
+# Camera HAL
+/(vendor|system/vendor)/bin/hw/android\.hardware\.camera\.provider-service(_32)?\.lineage u:object_r:hal_camera_default_exec:s0
+
 # DRM
 /(vendor|system/vendor)/bin/hw/android\.hardware\.drm@1\.1-service\.widevine u:object_r:hal_drm_widevine_exec:s0
 
