@@ -21,21 +21,17 @@ package org.omnirom.device.Preference;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.AttributeSet;
-
 import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
-
 import org.omnirom.device.utils.FileUtils;
 
-public final class ButtonSwapPreference extends SwitchPreference implements
-        Preference.OnPreferenceChangeListener {
-
+public final class ButtonSwapPreference
+        extends SwitchPreference implements Preference.OnPreferenceChangeListener {
     public static final String BUTTONS_SWAP_KEY = "buttons_swap";
     private static final String BUTTONS_SWAP_PATH = "/proc/touchpanel/reversed_keys_enable";
     private static final boolean BUTTONS_SWAP_DEFAULT_VALUE = false;
 
     public static final KernelFeature<Boolean> FEATURE = new KernelFeature<Boolean>() {
-
         @Override
         public boolean isSupported() {
             return FileUtils.isFileWritable(BUTTONS_SWAP_PATH);
@@ -58,7 +54,8 @@ public final class ButtonSwapPreference extends SwitchPreference implements
 
         @Override
         public boolean restore(SharedPreferences sp) {
-            if(!isSupported()) return false;
+            if (!isSupported())
+                return false;
 
             boolean value = sp.getBoolean(BUTTONS_SWAP_KEY, BUTTONS_SWAP_DEFAULT_VALUE);
             return applyValue(value);

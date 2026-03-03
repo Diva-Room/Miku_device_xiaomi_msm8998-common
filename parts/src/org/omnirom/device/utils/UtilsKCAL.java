@@ -19,7 +19,6 @@ package org.omnirom.device.utils;
 import android.util.Log;
 
 public final class UtilsKCAL {
-
     /**
      * Convert color temperature in Kelvins to ColorMatrix color
      *
@@ -33,40 +32,53 @@ public final class UtilsKCAL {
         double green;
         double blue;
         // R
-        if (temperature <= 66) red = 255;
+        if (temperature <= 66)
+            red = 255;
         else {
             red = temperature - 60;
             red = 329.698727446 * (Math.pow(red, -0.1332047592));
-            if (red < 0) red = 0;
-            if (red > 255) red = 255;
+            if (red < 0)
+                red = 0;
+            if (red > 255)
+                red = 255;
         }
         // G
         if (temperature <= 66) {
             green = temperature;
             green = 99.4708025861 * Math.log(green) - 161.1195681661;
-            if (green < 0) green = 0;
-            if (green > 255) green = 255;
+            if (green < 0)
+                green = 0;
+            if (green > 255)
+                green = 255;
         } else {
             green = temperature - 60;
             green = 288.1221695283 * (Math.pow(green, -0.0755148492));
-            if (green < 0) green = 0;
-            if (green > 255) green = 255;
+            if (green < 0)
+                green = 0;
+            if (green > 255)
+                green = 255;
         }
 
         // B
-        if (temperature >= 66) blue = 255;
-        else if (temperature <= 19) blue = 0;
+        if (temperature >= 66)
+            blue = 255;
+        else if (temperature <= 19)
+            blue = 0;
         else {
             blue = temperature - 10;
             blue = 138.5177312231 * Math.log(blue) - 305.0447927307;
-            if (blue < 0) blue = 0;
-            if (blue > 255) blue = 255;
+            if (blue < 0)
+                blue = 0;
+            if (blue > 255)
+                blue = 255;
         }
 
         rgb[0] = (int) red;
         rgb[1] = (int) green;
         rgb[2] = (int) blue;
-        Log.d("RGBfromK", "" + temperature + " " + red + " " + " " + green + " " + blue);
+        Log.d("RGBfromK",
+                "" + temperature + " " + red + " "
+                        + " " + green + " " + blue);
         return rgb;
     }
 
@@ -108,7 +120,9 @@ public final class UtilsKCAL {
         double x = (X / (X + Y + Z));
         double y = (Y / (X + Y + Z));
 
-        return (int) ((-449 * Math.pow((x - 0.332) / (y - 0.1858), 3)) + (3525 * Math.pow((x - 0.332) / (y - 0.1858), 2)) - (6823.3 * ((x - 0.332) / (y - 0.1858))) + (5520.33));
+        return (int) ((-449 * Math.pow((x - 0.332) / (y - 0.1858), 3))
+                + (3525 * Math.pow((x - 0.332) / (y - 0.1858), 2))
+                - (6823.3 * ((x - 0.332) / (y - 0.1858))) + (5520.33));
     }
 
     public static double clamp(double x, double min, double max) {

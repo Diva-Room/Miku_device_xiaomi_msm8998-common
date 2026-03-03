@@ -22,7 +22,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.AttributeSet;
 import android.widget.SeekBar;
-
 import org.omnirom.device.utils.FileUtils;
 
 /**
@@ -31,7 +30,6 @@ import org.omnirom.device.utils.FileUtils;
  * Created by 0ranko0P <ranko0p@outlook.com> on 2019.10.30
  */
 public final class BacklightPreference extends SeekBarPreferenceCham {
-
     public static final String KEY_BTN_BRIGHTNESS = "btn_brightness";
 
     private static final int BACKLIGHT_MIN_BRIGHTNESS = 0;
@@ -42,10 +40,10 @@ public final class BacklightPreference extends SeekBarPreferenceCham {
     private static final String FILE_LED_RIGHT = "/sys/class/leds/button-backlight1/max_brightness";
 
     public static KernelFeature<Integer> FEATURE = new KernelFeature<Integer>() {
-
         @Override
         public boolean isSupported() {
-            return FileUtils.isFileWritable(FILE_LED_LEFT) && FileUtils.isFileWritable(FILE_LED_RIGHT);
+            return FileUtils.isFileWritable(FILE_LED_LEFT)
+                    && FileUtils.isFileWritable(FILE_LED_RIGHT);
         }
 
         /**
@@ -62,8 +60,8 @@ public final class BacklightPreference extends SeekBarPreferenceCham {
         @Override
         public boolean applyValue(Integer newValue) {
             String newStrVal = newValue.toString();
-            return FileUtils.writeValue(FILE_LED_LEFT, newStrVal) &&
-                    FileUtils.writeValue(FILE_LED_RIGHT, newStrVal);
+            return FileUtils.writeValue(FILE_LED_LEFT, newStrVal)
+                    && FileUtils.writeValue(FILE_LED_RIGHT, newStrVal);
         }
 
         @Override
@@ -73,7 +71,8 @@ public final class BacklightPreference extends SeekBarPreferenceCham {
 
         @Override
         public boolean restore(SharedPreferences sp) {
-            if (!isSupported()) return false;
+            if (!isSupported())
+                return false;
 
             int storedValue = sp.getInt(KEY_BTN_BRIGHTNESS, BACKLIGHT_MAX_BRIGHTNESS);
             return applyValue(storedValue);

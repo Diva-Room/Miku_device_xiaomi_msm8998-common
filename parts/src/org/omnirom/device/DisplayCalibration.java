@@ -18,26 +18,23 @@
 
 package org.omnirom.device;
 
+import static org.omnirom.device.utils.FileUtils.isFileWritable;
+
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-
 import androidx.preference.Preference;
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
-
 import org.omnirom.device.Preference.KcalSeekBarPreference;
 import org.omnirom.device.utils.FileUtils;
 import org.omnirom.device.utils.UtilsKCAL;
 
-import static org.omnirom.device.utils.FileUtils.isFileWritable;
-
-public final class DisplayCalibration extends PreferenceFragment implements
-        OnPreferenceChangeListener {
-
+public final class DisplayCalibration
+        extends PreferenceFragment implements OnPreferenceChangeListener {
     private static final String TAG = "DisplayCalibration";
 
     public static final String KEY_KCAL_ENABLED = "kcal_enabled";
@@ -63,7 +60,8 @@ public final class DisplayCalibration extends PreferenceFragment implements
 
     private static final String COLOR_FILE = "/sys/devices/platform/kcal_ctrl.0/kcal";
     private static final String COLOR_FILE_CONTRAST = "/sys/devices/platform/kcal_ctrl.0/kcal_cont";
-    private static final String COLOR_FILE_SATURATION = "/sys/devices/platform/kcal_ctrl.0/kcal_sat";
+    private static final String COLOR_FILE_SATURATION =
+            "/sys/devices/platform/kcal_ctrl.0/kcal_sat";
     private static final String COLOR_FILE_ENABLE = "/sys/devices/platform/kcal_ctrl.0/kcal_enable";
 
     @Override
@@ -90,7 +88,8 @@ public final class DisplayCalibration extends PreferenceFragment implements
         mKcalBlue.setOnPreferenceChangeListener(this);
 
         mKcalSaturation = findPreference(KEY_KCAL_SATURATION);
-        mKcalSaturation.setProgress(mPrefs.getInt(KEY_KCAL_SATURATION, mKcalSaturation.getDefault()));
+        mKcalSaturation.setProgress(
+                mPrefs.getInt(KEY_KCAL_SATURATION, mKcalSaturation.getDefault()));
         mKcalSaturation.setOnPreferenceChangeListener(this);
 
         mKcalContrast = findPreference(KEY_KCAL_CONTRAST);
@@ -104,7 +103,6 @@ public final class DisplayCalibration extends PreferenceFragment implements
         mRed = String.valueOf(mPrefs.getInt(KEY_KCAL_RED, mKcalRed.getDefault()));
         mGreen = String.valueOf(mPrefs.getInt(KEY_KCAL_GREEN, mKcalGreen.getDefault()));
         mBlue = String.valueOf(mPrefs.getInt(KEY_KCAL_BLUE, mKcalBlue.getDefault()));
-
     }
 
     @Override
@@ -136,7 +134,7 @@ public final class DisplayCalibration extends PreferenceFragment implements
             int storedContrast = sp.getInt(DisplayCalibration.KEY_KCAL_CONTRAST, 255);
 
             Log.d(TAG, "onRestore: R: " + storedRed + ", G: " + storedGreen + ",B: " + storedBlue);
-            Log.d(TAG, "onRestore: Sa: " + storedSaturation +", contrast: " + storedContrast);
+            Log.d(TAG, "onRestore: Sa: " + storedSaturation + ", contrast: " + storedContrast);
             FileUtils.writeValue(COLOR_FILE, storedRed + " " + storedGreen + " " + storedBlue);
             FileUtils.writeValue(COLOR_FILE_CONTRAST, String.valueOf(storedContrast));
             FileUtils.writeValue(COLOR_FILE_SATURATION, String.valueOf(storedSaturation));
@@ -150,7 +148,8 @@ public final class DisplayCalibration extends PreferenceFragment implements
         int saturation = mKcalSaturation.reset();
         int contrast = mKcalContrast.reset();
 
-        mPrefs.edit().putInt(KEY_KCAL_RED, red)
+        mPrefs.edit()
+                .putInt(KEY_KCAL_RED, red)
                 .putInt(KEY_KCAL_GREEN, green)
                 .putInt(KEY_KCAL_BLUE, blue)
                 .putInt(KEY_KCAL_SATURATION, saturation)
@@ -163,7 +162,8 @@ public final class DisplayCalibration extends PreferenceFragment implements
         FileUtils.writeValue(COLOR_FILE_SATURATION, Integer.toString(saturation));
         FileUtils.writeValue(COLOR_FILE_CONTRAST, Integer.toString(contrast));
 
-        int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
+        int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256),
+                mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
         mKcalColorTemp.setValue(cct);
     }
 
@@ -186,7 +186,8 @@ public final class DisplayCalibration extends PreferenceFragment implements
                 mKcalGreen.setValue(green);
                 mKcalBlue.setValue(blue);
 
-                mPrefs.edit().putInt(KEY_KCAL_RED, red)
+                mPrefs.edit()
+                        .putInt(KEY_KCAL_RED, red)
                         .putInt(KEY_KCAL_GREEN, green)
                         .putInt(KEY_KCAL_BLUE, blue)
                         .apply();
@@ -207,7 +208,8 @@ public final class DisplayCalibration extends PreferenceFragment implements
                 FileUtils.writeValue(COLOR_FILE_SATURATION, mSaturation);
                 FileUtils.writeValue(COLOR_FILE_CONTRAST, mContrast);
 
-                int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256), mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
+                int cct = UtilsKCAL.KfromRGB(mPrefs.getInt(KEY_KCAL_RED, 256),
+                        mPrefs.getInt(KEY_KCAL_GREEN, 256), mPrefs.getInt(KEY_KCAL_BLUE, 256));
                 mKcalColorTemp.setValue(cct);
                 return true;
             case KEY_KCAL_SATURATION:
@@ -225,7 +227,8 @@ public final class DisplayCalibration extends PreferenceFragment implements
 
     private boolean updateRGB(String key, Integer newVal) {
         // save new color value
-        if (!mPrefs.edit().putInt(key, newVal).commit()) return false;
+        if (!mPrefs.edit().putInt(key, newVal).commit())
+            return false;
 
         // apply new RGB color to kernel
         int r = mPrefs.getInt(KEY_KCAL_RED, 256);

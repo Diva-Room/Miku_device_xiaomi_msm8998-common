@@ -22,15 +22,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import androidx.preference.PreferenceManager;
-
 import org.omnirom.device.Preference.BacklightPreference;
 import org.omnirom.device.Preference.ButtonSwapPreference;
 import org.omnirom.device.Preference.FastChargePreference;
 
 public final class Startup extends BroadcastReceiver {
-
     @Override
     public void onReceive(final Context context, final Intent intent) {
         // Execute boot jobs

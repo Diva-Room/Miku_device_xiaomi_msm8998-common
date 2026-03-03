@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
 import androidx.annotation.Nullable;
 
 public final class DisplayCalibrationActivity extends BaseActivity {

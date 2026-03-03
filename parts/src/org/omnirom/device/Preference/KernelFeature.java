@@ -21,19 +21,15 @@ package org.omnirom.device.Preference;
 import android.annotation.WorkerThread;
 import android.content.SharedPreferences;
 
-
 public interface KernelFeature<T> {
-
     /**
      * @return true if kernel support this feature
      */
     boolean isSupported();
 
-    @WorkerThread
-    T getCurrentValue();
+    @WorkerThread T getCurrentValue();
 
-    @WorkerThread
-    boolean applyValue(T t);
+    @WorkerThread boolean applyValue(T t);
 
     void applySharedPreferences(T t, SharedPreferences sp);
 

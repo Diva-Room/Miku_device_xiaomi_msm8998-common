@@ -20,14 +20,12 @@ package org.omnirom.device;
 
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
 
 public final class DeviceSettings extends PreferenceFragment {
-
     private static final String KEY_CATEGORY_DISPLAY = "display";
     private static final String KEY_CATEGORY_KCAL = "kcal";
 

@@ -21,22 +21,18 @@ package org.omnirom.device.Preference;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.AttributeSet;
-
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
-
 import org.omnirom.device.utils.FileUtils;
 
-public final class FastChargePreference extends SwitchPreference
-        implements Preference.OnPreferenceChangeListener {
-
+public final class FastChargePreference
+        extends SwitchPreference implements Preference.OnPreferenceChangeListener {
     public static final String USB_FAST_CHARGE_KEY = "fastcharge";
     private static final String USB_FAST_CHARGE_PATH = "/sys/kernel/fast_charge/force_fast_charge";
     private static final boolean USB_FAST_CHARGE_DEFAULT = false;
 
     public static final KernelFeature<Boolean> FEATURE = new KernelFeature<Boolean>() {
-
         @Override
         public boolean isSupported() {
             return FileUtils.isFileWritable(USB_FAST_CHARGE_PATH);
@@ -59,7 +55,8 @@ public final class FastChargePreference extends SwitchPreference
 
         @Override
         public boolean restore(SharedPreferences sp) {
-            if (!isSupported()) return false;
+            if (!isSupported())
+                return false;
 
             boolean value = sp.getBoolean(USB_FAST_CHARGE_KEY, USB_FAST_CHARGE_DEFAULT);
             return applyValue(value);
@@ -79,7 +76,8 @@ public final class FastChargePreference extends SwitchPreference
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         boolean value = (boolean) newValue;
         if (FEATURE.applyValue(value))
-            FEATURE.applySharedPreferences(value, PreferenceManager.getDefaultSharedPreferences(getContext()));
+            FEATURE.applySharedPreferences(
+                    value, PreferenceManager.getDefaultSharedPreferences(getContext()));
         return true;
     }
 }

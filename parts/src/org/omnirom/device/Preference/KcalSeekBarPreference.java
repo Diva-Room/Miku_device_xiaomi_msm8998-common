@@ -2,11 +2,9 @@ package org.omnirom.device.Preference;
 
 import android.content.Context;
 import android.util.AttributeSet;
-
 import org.omnirom.device.utils.UtilsKCAL;
 
 public final class KcalSeekBarPreference extends SeekBarPreferenceCham {
-
     public KcalSeekBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         // hide icon for kcal

@@ -32,15 +32,12 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.DimenRes;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
-
 import org.omnirom.device.R;
 
 public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekBarChangeListener {
-
     private final String TAG = getClass().getName();
 
     private static final String ANDROIDNS = "http://schemas.android.com/apk/res/android";
@@ -55,7 +52,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     private String mUnitsLeft = "";
     private String mUnitsRight = "";
     private SeekBar mSeekBar;
-    //private TextView mTitle;
+    // private TextView mTitle;
     private TextView mUnitsLeftText;
     private TextView mUnitsRightText;
     private ImageView mImagePlus;
@@ -87,17 +84,17 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     }
 
     private void setValuesFromXml(AttributeSet attrs, Context context) {
-        final TypedArray a = context.obtainStyledAttributes(
-                attrs, R.styleable.SeekBarPreference);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SeekBarPreference);
 
         mMaxValue = attrs.getAttributeIntValue(ANDROIDNS, "max", 100);
         mMinValue = attrs.getAttributeIntValue(ANDROIDNS, "min", 0);
         mDefaultValue = attrs.getAttributeIntValue(ANDROIDNS, "defaultValue", -1);
         if (mDefaultValue != attrs.getAttributeIntValue(ANDROIDNS, "defaultValue", -2)) {
             mDefaultValue = (mMinValue + mMaxValue) / 2;
-            Log.w(TAG, "Preference with key \"" + getKey() +
-                    "\" does not have a default value set in xml, assuming " + mDefaultValue +
-                    " until further changes");
+            Log.w(TAG,
+                    "Preference with key \"" + getKey()
+                            + "\" does not have a default value set in xml, assuming "
+                            + mDefaultValue + " until further changes");
         }
         if (mDefaultValue < mMinValue || mDefaultValue > mMaxValue) {
             throw new IllegalArgumentException("Default value is out of range!");
@@ -124,11 +121,14 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         context.getTheme().resolveAttribute(android.R.attr.colorForeground, typedValue, true);
         a.recycle();
 
-        mOffsetX = (int) context.getResources().getDimension(R.dimen.seek_bar_preference_cham_value_x_offset);
-        mOffsetY = (int) context.getResources().getDimension(R.dimen.seek_bar_preference_cham_value_y_offset);
+        mOffsetX = (int) context.getResources().getDimension(
+                R.dimen.seek_bar_preference_cham_value_x_offset);
+        mOffsetY = (int) context.getResources().getDimension(
+                R.dimen.seek_bar_preference_cham_value_y_offset);
     }
 
-    private String getAttributeStringValue(AttributeSet attrs, String namespace, String name, String defaultValue) {
+    private String getAttributeStringValue(
+            AttributeSet attrs, String namespace, String name, String defaultValue) {
         String value = attrs.getAttributeValue(namespace, name);
         if (value == null)
             value = defaultValue;
@@ -140,7 +140,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     public void onDependencyChanged(Preference dependency, boolean disableDependent) {
         super.onDependencyChanged(dependency, disableDependent);
         this.setShouldDisableView(true);
-        //if (mTitle != null)
+        // if (mTitle != null)
         //    mTitle.setEnabled(!disableDependent);
         if (mSeekBar != null)
             mSeekBar.setEnabled(!disableDependent);
@@ -157,7 +157,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         // Remove possible previously attached change listener to prevent setting wrong values
         mSeekBar.setOnSeekBarChangeListener(null);
         mSeekBar.setMax(mMaxValue - mMinValue);
-        //mTitle = (TextView) holder.findViewById(android.R.id.title);
+        // mTitle = (TextView) holder.findViewById(android.R.id.title);
         mUnitsLeftText = (TextView) holder.findViewById(R.id.seekBarPrefUnitsLeft);
         mUnitsRightText = (TextView) holder.findViewById(R.id.seekBarPrefUnitsRight);
         mImagePlus = (ImageView) holder.findViewById(R.id.imagePlus);
@@ -213,7 +213,8 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         });
 
         if (mPopupWidth == 0) {
-            mPopupWidth = (int) getContext().getResources().getDimension(R.dimen.seek_bar_popup_text_width);
+            mPopupWidth = (int) getContext().getResources().getDimension(
+                    R.dimen.seek_bar_popup_text_width);
         }
 
         mPopupValue = onInflatePopupLayout(getContext(), LayoutInflater.from(getContext()));
@@ -226,25 +227,24 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     }
 
     protected WindowManager.LayoutParams getPopupLayoutParams(Context context) {
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams(
-                mPopupWidth,
-                WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_APPLICATION,
-                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
-                PixelFormat.TRANSLUCENT);
+        WindowManager.LayoutParams params =
+                new WindowManager.LayoutParams(mPopupWidth, WindowManager.LayoutParams.WRAP_CONTENT,
+                        WindowManager.LayoutParams.TYPE_APPLICATION,
+                        WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, PixelFormat.TRANSLUCENT);
         params.gravity = Gravity.START | Gravity.TOP;
         return params;
     }
 
     protected TextView onInflatePopupLayout(Context context, LayoutInflater inflater) {
-       return (TextView) inflater.inflate(R.layout.seek_bar_value_popup, null, false);
+        return (TextView) inflater.inflate(R.layout.seek_bar_value_popup, null, false);
     }
 
     /**
      * Update a SeekBarPreferenceCham view with our current state
      */
     protected void updateView() {
-        if (!initialised) return;
+        if (!initialised)
+            return;
         try {
             mStatusText.setText(String.valueOf(mCurrentValue));
             mSeekBar.setProgress(mCurrentValue - mMinValue);
@@ -287,22 +287,16 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         persistInt(newValue);
     }
 
-    public void setProgress(int progress) {
-        this.mCurrentValue = progress;
-    }
+    public void setProgress(int progress) { this.mCurrentValue = progress; }
 
-    protected void setInterval(int interval) {
-        this.mInterval = interval;
-    }
+    protected void setInterval(int interval) { this.mInterval = interval; }
 
     public void refresh(int newValue) {
         // this will trigger onProgressChanged and refresh everything
         mSeekBar.setProgress(newValue - mMinValue);
     }
 
-    private void updateCurrentValueText() {
-        mStatusText.setText(String.valueOf(mCurrentValue));
-    }
+    private void updateCurrentValueText() { mStatusText.setText(String.valueOf(mCurrentValue)); }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -338,12 +332,11 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         updateView();
     }
 
-    private Drawable getSeekBarThumb() {
-        return mProgressThumb;
-    }
+    private Drawable getSeekBarThumb() { return mProgressThumb; }
 
     private void startUpdateViewValue() {
-        if (!mTrackingTouch) return;
+        if (!mTrackingTouch)
+            return;
         Rect thumbRect = getSeekBarThumb().getBounds();
         int[] seekBarPos = new int[2];
         int[] offsetPos = new int[2];
@@ -356,7 +349,8 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         }
         mPopupValue.setText(mUnitsLeft + mCurrentValue + mUnitsRight);
         mPopupLayoutParams = (WindowManager.LayoutParams) mPopupValue.getLayoutParams();
-        mPopupLayoutParams.x = thumbRect.centerX() + seekBarPos[0] - offsetPos[0] - (mPopupWidth - thumbRect.width()) / 2 + mOffsetX;
+        mPopupLayoutParams.x = thumbRect.centerX() + seekBarPos[0] - offsetPos[0]
+                - (mPopupWidth - thumbRect.width()) / 2 + mOffsetX;
         mPopupLayoutParams.y = seekBarPos[1] - offsetPos[1] + mOffsetY;
         mPopupValue.setLayoutParams(mPopupLayoutParams);
         if (mPopupAdded) {
@@ -371,8 +365,10 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
     }
 
     private void stopUpdateViewValue() {
-        if (!mPopupAdded) return;
-        ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE)).removeView(mPopupValue);
+        if (!mPopupAdded)
+            return;
+        ((WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE))
+                .removeView(mPopupValue);
         mPopupAdded = false;
     }
 
@@ -390,9 +386,7 @@ public class SeekBarPreferenceCham extends Preference implements SeekBar.OnSeekB
         updateView();
     }
 
-    public int getDefault() {
-        return mDefaultValue;
-    }
+    public int getDefault() { return mDefaultValue; }
 
     @Override
     public void setDefaultValue(Object defaultValue) {

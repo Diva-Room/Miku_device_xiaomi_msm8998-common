@@ -17,7 +17,6 @@
 package org.omnirom.device.utils;
 
 import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -64,7 +63,7 @@ public final class FileUtils {
 
     public static boolean getFileValueAsBoolean(String filename, boolean defValue) {
         String fileValue = readLine(filename);
-        if(fileValue!=null){
+        if (fileValue != null) {
             return (fileValue.equals("0") ? false : true);
         }
         return defValue;
@@ -72,7 +71,7 @@ public final class FileUtils {
 
     public static String getFileValue(String filename, String defValue) {
         String fileValue = readLine(filename);
-        if(fileValue!=null){
+        if (fileValue != null) {
             return fileValue;
         }
         return defValue;
